@@ -27,6 +27,7 @@ const App = () => {
     <Stack.Screen name='ReportCard' component={ReportCardScreen} options={{header:()=>null}}/>
     <Stack.Screen name='Profile' component={ProfileScreen} options={{header:()=>null}}/>
     <Stack.Screen name='UploadDetails' component={UploadDetailScreen} options={{header:()=>null}}/>
+    
   </Stack.Navigator>
 </NavigationContainer>
 
