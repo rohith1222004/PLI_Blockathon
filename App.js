@@ -2,9 +2,6 @@ import {StyleSheet, Text, View,Image } from 'react-native';
 import Btn from './Components/Btn';
 
 
-
-
-
 const App = () =>{
 
 
@@ -16,21 +13,19 @@ const App = () =>{
       </View>
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center'}}>Choose the Situation</Text>
+            <Text style={{fontSize:30,textAlign:'center'}}>What to process ?</Text>
           </View>
       </View>
 
       <View style={styles.buttonWrap}>
         <View style={styles.button1}>
-           <Btn content={"Emergency"} />
+           <Btn content={"Upload/Scan new data"} />
         </View>
 
         <View style={styles.button2}>
-          <Btn content={"Health Records"} />
+          <Btn content={"Access Health Records"} />
         </View>
-        <View style={styles.button2}>
-          <Btn content={"Food Recommendations"} />
-        </View>
+
       </View>
      
     </View>
@@ -45,7 +40,7 @@ const styles = StyleSheet.create({
   },
   WelcomeText:{
     width:350,
-    marginTop:150,
+    marginTop:200,
   },
   WelcomeWrap:{
     alignItems:'center',
