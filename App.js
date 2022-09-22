@@ -3,7 +3,7 @@ import Btn from './Components/Btn';
 import InputBox from './Components/InputBox';
 
 
-const Profile = () =>{
+const App = () =>{
 
 
 
@@ -21,43 +21,27 @@ const Profile = () =>{
             <Image source={require('./assets/profile.png')} />
           </View>
         </View>
-        <View>
-          <Text style={{marginLeft:25,fontSize:18,marginTop:30}}>Phone Number </Text>
-          <Text style={{marginLeft:25,fontSize:18,fontWeight:'700',marginTop:10}}>+91 9498844532</Text>
-        </View>
-        <View>
-        <View style={styles.line}>
-                
-        </View>
-          <Text style={{marginLeft:25,fontSize:18,marginTop:20}}>Gender </Text>
-          <Text style={{marginLeft:25,fontSize:18,fontWeight:'700',marginTop:10}}>Male</Text>
-        </View>
-        <View style={styles.line}>
-                
-        </View>
-        <View>
-          <Text style={{marginLeft:25,fontSize:18,marginTop:20}}>Date of Birth</Text>
-          <Text style={{marginLeft:25,fontSize:18,fontWeight:'700',marginTop:10}}>4/1/2004</Text>
+        <View style={styles.inp}>
+          <InputBox placeholder={'Report Type'} />
+          <View style={styles.inp1}>
+            <InputBox placeholder={'Hospital Name'}/>
+          </View>
+          <View style={styles.inp1}>
+            <InputBox placeholder={'Hospital ID'} />
+          </View>
+          <View style={styles.inp1}>
+            <InputBox placeholder={'Doctor Signature'}/>
+          </View>
         </View>
 
-        <View style={styles.line}>
-                
-        </View>
-        <View>
-          <Text style={{marginLeft:25,fontSize:18,marginTop:20}}>Blood Group </Text>
-          <Text style={{marginLeft:25,fontSize:18,fontWeight:'700',marginTop:10}}>B+</Text>
+        <View style={styles.btn}>
+          <Btn content={'Upload Document'}/>
         </View>
         <View style={styles.line}>
-                
-        </View>
-        <View style={styles.bluetxt}>
-          <Text style={{color:'#734DDD',fontSize:20}}>Click Here to get his Medical Records</Text>
-        </View>
-        <View style={styles.line}>
-                
+                <Text>hello</Text>
         </View>
         <View style={styles.txtRed}>
-          <Text style={{color:'#DD4D4D',fontSize:20}}>Upload Medical Records</Text>
+          <Text style={{color:'#DD4D4D',fontSize:22}}>Upload Medical Records</Text>
         </View>
     </View>
 
@@ -67,36 +51,42 @@ const Profile = () =>{
 const styles = StyleSheet.create({
   options:{
     marginTop:40,
-    marginLeft:10
+    marginLeft:15
   },
   ProfileName:{
     alignItems:'center'
   },
+  profileImg:{
+    
+  },
   ProfileImgWrap:{
     marginTop:10,
     alignItems:'center',
+  },
+  inp:{
+    marginTop:80,
+    alignItems:'center',
+  },
+  inp1:{
+    alignItems:'center',
+    marginTop:20,
   },
   btn:{
     alignItems:'center',
     marginTop:40
   },
   line:{
-    marginTop:10,
-    height:2,
+    marginTop:30,
+    height:4,
     width:420,
     backgroundColor:'#D9D9D9'
   },
   txtRed:{
     alignItems:'center',
-    marginTop:25,
-  
-  },
-  bluetxt:{
-    marginLeft:25,
-    marginTop:30,
-    marginBottom:25
+    marginTop:35,
+    
   }
 
 });
 
-export default Profile;
+export default App;
