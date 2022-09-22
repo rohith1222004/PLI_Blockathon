@@ -1,10 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Button } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 import { ZoomOut } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
+import { Audio } from 'expo-av';
 
 export default function App() {
+
+  const sound = useRef(new Audio.Sound());
+
+    useEffect(() => {
+      return () => sound.current.unloadAsync();
+    }, []);
+  
+    const playSound = async () => {
+      console.log("Loading Sound");
+  
+      await sound.current.createAsync(require("./assets/buzz.mp3"));
+  
+      console.log("playing sound");
+  
+      const checkLoaded = await sound.current.getStatusAsync();
+      if (checkLoaded.isLoaded === true) {
+        console.log("Error in Loading mp3");
+      } else {
+        await sound.current.playAsync();
+      }
+    };
+
   const [data, setData] = useState({
     x: 0,
     y: 0,
@@ -31,7 +54,8 @@ export default function App() {
     let g = force/9.81
     setgg(g)
     if(g > 1){
-        setAccident("Light accident")
+        setAccident("Light accident");
+        // playSound();
     }
 
     if(g > 2){
@@ -73,8 +97,13 @@ export default function App() {
   return (
     <ScrollView>
     <View style={styles.container}>
+        
       
       <View><Image style={styles.accidentImage} source={require('./assets/accident.jpg')}/></View>
+        
+      <View style={styles.container1}>
+            <Button title="Play Sound" onPress={playSound} />
+        </View>
 
       <Text style={styles.accidentText}>{accident}</Text>
 
@@ -89,6 +118,8 @@ export default function App() {
           <Text>Fast</Text>
         </TouchableOpacity> */}
       </View>
+
+        
 
       <View style={{marginTop: 130}}>
         <Text style={styles.text}>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
@@ -110,6 +141,12 @@ function round(n) {
   return Math.floor(n * 100) / 100;
 }
 const styles = StyleSheet.create({
+    container1: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#ecf0f1',
+        padding: 10,
+      },
   container: {
     flex: 1,
     justifyContent: 'center',
