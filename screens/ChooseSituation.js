@@ -1,11 +1,14 @@
-import {StyleSheet, Text, View,Image } from 'react-native';
+import {StyleSheet, Text, View,Image, Pressable } from 'react-native';
 import RedBtn from '../Components/RedBtn';
 import Btn from '../Components/Btn';
 
 const ChooseSituation = ({navigation}) =>{
-  // const onclick = () => { 
-  //   navigation.navigate('scan');
-  //  }
+  const onclick = () => { 
+    navigation.navigate('scan');
+   }
+   const HealthReacords= () => { 
+    navigation.navigate('MedicalRecords')
+    }
   return (
     <View style={styles.container} >
       <View style={styles.options}>
@@ -18,13 +21,17 @@ const ChooseSituation = ({navigation}) =>{
       </View>
 
       <View style={styles.buttonWrap}>
-        <View style={styles.button1}>
-           <RedBtn content={"Emergency"} />
-        </View>
-
+        <Pressable onPress={onclick}>
+          <View style={styles.button1}>
+            <RedBtn content={"Emergency"} />
+          </View>
+        </Pressable>
+      
+      <Pressable onPress={HealthReacords}>
         <View style={styles.button2}>
           <Btn content={"Health Records"} />
         </View>
+      </Pressable>
         <View style={styles.button2}>
           <Btn content={"Food Recommendations"} />
         </View>

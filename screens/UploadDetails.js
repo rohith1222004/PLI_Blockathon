@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View,Image } from 'react-native';
-import Btn from './Components/Btn';
-import InputBox from './Components/InputBox';
+import Btn from '../Components/Btn';
+import InputBox from '../Components/InputBox';
 
 
 const App = () =>{
@@ -10,7 +10,7 @@ const App = () =>{
   return (
     <View style={styles.container} >
         <View style={styles.options}>
-          <Image source={require('./assets/options.png')} />
+          <Image source={require('../assets/options.png')} />
         </View>
 
         <View style={styles.ProfileName}>
@@ -18,7 +18,7 @@ const App = () =>{
         </View>
         <View style={styles.ProfileImgWrap}>
           <View style={styles.profileImg}>
-            <Image source={require('./assets/profile.png')} />
+            <Image source={require('../assets/profile.png')} />
           </View>
         </View>
         <View style={styles.inp}>

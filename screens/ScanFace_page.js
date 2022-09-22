@@ -1,16 +1,19 @@
-import {StyleSheet, Text, View,Image } from 'react-native';
-import Btn from './Components/Btn';
+import {StyleSheet, Text, View,Image, Pressable } from 'react-native';
+import Btn from '../Components/Btn';
 
 
-const ScanFace = () =>{
+const ScanFace = ({navigation}) =>{
 
+  const onclick = () => { 
+    navigation.navigate('Graph');
+   }
 
 
   return (
     <View style={styles.container} >
       <View style={styles.ImgHeadWrap}>
           <View style={styles.options}>
-            <Image source={require("./assets/options.png")}/>
+            <Image source={require("../assets/options.png")}/>
           </View>
           <View>
             <Text style={{fontSize:28,fontWeight:"700", marginTop:60,marginLeft:50}}>Hospital Portal</Text>
@@ -29,9 +32,11 @@ const ScanFace = () =>{
       </View>
 
       <View style={styles.buttonWrap}>
+        <Pressable onPress={onclick}>
         <View style={styles.button2}>
           <Btn content={"Access Health Records"} />
         </View>
+        </Pressable>
       </View>
 
       <View style={styles.fingerprint}>
