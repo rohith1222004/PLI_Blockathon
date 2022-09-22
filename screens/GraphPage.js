@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View,Image, ScrollView } from 'react-native';
-import BlackGraphBtn from '../Components/BlackGraphBtn';
+import BlackGraphBtn from './Components/BlackGraphBtn';
 import Btn from './Components/Btn';
 import GraphBtn from './Components/GraphBtn';
 
@@ -42,7 +42,7 @@ return (
           <GraphBtn content={'Month'}/>
         </View>
         <View style={styles.graBtn}>
-        <BlackGraphBtn/>
+        <BlackGraphBtn content={'All'}/>
         </View>
       </View>
     </View>
