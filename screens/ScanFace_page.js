@@ -13,13 +13,13 @@ const ScanFace = () =>{
             <Image source={require("./assets/options.png")}/>
           </View>
           <View>
-            <Text style={{fontSize:35,fontWeight:"700", marginTop:30,marginLeft:50}}>Hospital Portal</Text>
+            <Text style={{fontSize:28,fontWeight:"700", marginTop:60,marginLeft:50}}>Hospital Portal</Text>
           </View>
       </View>
 
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Scan the Patient to inform his family</Text>
+            <Text style={{fontSize:26,textAlign:'center',fontWeight:'600'}}>Scan the Patient to inform his family</Text>
           </View>
       </View>
       <View style={styles.scanWrap}>

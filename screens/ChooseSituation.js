@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View,Image } from 'react-native';
-import Btn from './Components/Btn';
+import RedBtn from './Components/RedBtn';
 
 const ChooseSituation = () =>{
 
@@ -16,7 +16,7 @@ const ChooseSituation = () =>{
 
       <View style={styles.buttonWrap}>
         <View style={styles.button1}>
-           <Btn content={"Emergency"} />
+           <RedBtn content={"Emergency"} />
         </View>
 
         <View style={styles.button2}>
