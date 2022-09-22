@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View,Image } from 'react-native';
-import Btn from './Components/Btn';
+import Btn from '../Components/Btn';
 
 
 const PatientDetails = () =>{
@@ -9,7 +9,7 @@ const PatientDetails = () =>{
   return (
     <View style={styles.container} >
       <View style={styles.options}>
-        <Image source={require("./assets/options.png")}/>
+        <Image source={require("../assets/options.png")}/>
       </View>
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>

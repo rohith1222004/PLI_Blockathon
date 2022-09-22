@@ -1,16 +1,22 @@
-import {StyleSheet, Text, View,Image } from 'react-native';
-import Btn from './Components/Btn';
-import InputBox from './Components/InputBox';
+import {StyleSheet, Text, View,Image,Pressable} from 'react-native';
 
 
-const Profile = () =>{
 
+
+const Profile = ({navigation}) =>{
+const uploadclick = () => { 
+navigation.navigate('UploadDetails')
+ }
+
+ const clickedMedicalRecords = () =>{
+  navigation.navigate('MedicalRecords')
+ }
 
 
   return (
     <View style={styles.container} >
         <View style={styles.options}>
-          <Image source={require('./assets/options.png')} />
+          <Image source={require('../assets/options.png')} />
         </View>
 
         <View style={styles.ProfileName}>
@@ -18,7 +24,7 @@ const Profile = () =>{
         </View>
         <View style={styles.ProfileImgWrap}>
           <View style={styles.profileImg}>
-            <Image source={require('./assets/profile.png')} />
+            <Image source={require('../assets/profile.png')} />
           </View>
         </View>
         <View>
@@ -50,15 +56,19 @@ const Profile = () =>{
         <View style={styles.line}>
                 
         </View>
+        <Pressable onPress={clickedMedicalRecords}>
         <View style={styles.bluetxt}>
           <Text style={{color:'#734DDD',fontSize:20}}>Click Here to get his Medical Records</Text>
         </View>
+        </Pressable>
         <View style={styles.line}>
                 
         </View>
+        <Pressable onPress={uploadclick}>
         <View style={styles.txtRed}>
           <Text style={{color:'#DD4D4D',fontSize:20}}>Upload Medical Records</Text>
         </View>
+        </Pressable>
     </View>
 
   );

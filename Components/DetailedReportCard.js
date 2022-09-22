@@ -9,17 +9,17 @@ return (
     <View style={styles.outline}>
      <View style={styles.card}>
           <View style={styles.head}>
-            <Text style={{fontSize:25,fontWeight:'700'}}>{ReportName} Report</Text>
+            <Text style={{fontSize:22,fontWeight:'700'}}>{ReportName} Report</Text>
                 <View style={styles.date}>
                 <Text style={{fontSize:14,fontWeight:'500'}}>{date}</Text>
                 </View>
           </View>
           <View>
-            <Text style={{fontSize:22,fontWeight:'700',color:'#1313DF',marginTop:25}}>Test ID:<Text style={{fontSize:18,fontWeight:'500'}}>{ID}</Text></Text>
-            <Text style={{fontSize:22,fontWeight:'700',marginTop:12}}>Hosp/Lab<Text style={{fontSize:18,fontWeight:'500'}}>{hospName}</Text></Text>
-            <Text style={{fontSize:22,fontWeight:'700',marginTop:12}}>Ref. By: <Text style={{fontSize:18,fontWeight:'500'}}>{RefDOC}</Text></Text>
-            <Text style={{fontSize:22,fontWeight:'700',marginTop:12}}>Test Purpose :<Text style={{fontSize:18,fontWeight:'500'}}> {purpose}</Text></Text>
-            <Text style={{fontSize:22,fontWeight:'700',marginTop:12}}>Verified By :<Text style={{fontSize:18,fontWeight:'500'}}> {VerfDoc}</Text></Text>
+            <Text style={{fontSize:20,fontWeight:'700',color:'#1313DF',marginTop:25,marginLeft:10}}>Test ID:<Text style={{fontSize:18,fontWeight:'500'}}>{ID}</Text></Text>
+            <Text style={{fontSize:20,fontWeight:'700',marginTop:12,marginLeft:13}}>Hosp/Lab:<Text style={{fontSize:18,fontWeight:'500'}}> {hospName}</Text></Text>
+            <Text style={{fontSize:20,fontWeight:'700',marginTop:12,marginLeft:13}}>Ref. By: <Text style={{fontSize:18,fontWeight:'500'}}>{RefDOC}</Text></Text>
+            <Text style={{fontSize:20,fontWeight:'700',marginTop:12,marginLeft:10}}>Test Purpose :<Text style={{fontSize:18,fontWeight:'500'}}> {purpose}</Text></Text>
+            <Text style={{fontSize:20,fontWeight:'700',marginTop:12,marginLeft:10}}>Verified By :<Text style={{fontSize:18,fontWeight:'500'}}> {VerfDoc}</Text></Text>
           </View>
           <View style={styles.update}>
             <Text style={{fontSize:20,fontWeight:'500',color:'#1313DF',marginTop:20}}>Update</Text>

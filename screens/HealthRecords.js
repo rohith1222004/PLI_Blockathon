@@ -1,25 +1,30 @@
-import {StyleSheet, Text, View,Image } from 'react-native';
+import {StyleSheet, Text, View,Image, Pressable } from 'react-native';
+import Report from '../Components/ReportCard';
 
-
-import Report from './Components/ReportCard';
-
-const App = () =>{
-
+const HealthRecords = ({navigation}) =>{
+const cardcliked = () => { 
+  navigation.navigate('DetailedRecord')
+ }
   return (
 
 <View style={styles.container}>
   <View style={styles.options}>
-    <Image source={require('./assets/options.png')}/>
+    <Image source={require('../assets/options.png')}/>
   </View>
   <View style={styles.Head}>
     <Text style={{fontSize:30,fontWeight:'700',marginTop:15}}>Surya's Health Records</Text>
   </View>
+  <Pressable onPress={cardcliked}>
     <View style={styles.Report1}>
      <Report ReportName={'Hematology'} date={'25-MAY-2022'} ID={'SURYANAYA0004'} hospName={'Graham Nursing Home'} RefDOC={' Dr. Sankar M.S.,M.Ch(Uro)'}/>
     </View>
+  </Pressable>
+
+  <Pressable onPress={cardcliked}>
     <View style={styles.Report2}>
     <Report ReportName={'Hematology'} date={'25-MAY-2022'} ID={'SURYANAYA0004'} hospName={'Graham Nursing Home'} RefDOC={' Dr. Sankar M.S.,M.Ch(Uro)'}/>
     </View>
+ </Pressable>
 </View>
 
 
@@ -46,4 +51,4 @@ Head:{
 
 });
 
-export default App;
+export default HealthRecords;

@@ -19,12 +19,13 @@ return (
             <Text style={{fontSize:18,fontWeight:'500',marginTop:12}}>Hosp/Lab: {hospName}</Text>
             <Text style={{fontSize:18,fontWeight:'500',marginTop:12}}>Ref. By: {RefDOC}</Text>
           </View>
-          <View>
-            <Text style={{fontSize:16,fontWeight:'500',color:'#1313DF',marginTop:12,marginLeft:200}}>Get Details</Text>
-            <View style={styles.line}>
-
+            
+             <View>
+              <Text style={{fontSize:16,fontWeight:'500',color:'#1313DF',marginTop:12,marginLeft:200}}>Get Details</Text>
+              <View style={styles.line}>
+              </View>
             </View>
-          </View>
+          
      </View>
     
   </View>
