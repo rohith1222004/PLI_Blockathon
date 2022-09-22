@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 import { ZoomOut } from 'react-native-reanimated';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function App() {
   const [data, setData] = useState({
@@ -70,25 +71,35 @@ export default function App() {
 
   const { x, y, z } = data;
   return (
+    <ScrollView>
     <View style={styles.container}>
-      <Text style={styles.text}>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
-      <Text style={styles.text}>
-        x: {round(x)} y: {round(y)} z: {round(z)}
-      </Text>
+      
+      <View><Image style={styles.accidentImage} source={require('./assets/accident.jpg')}/></View>
+
+      <Text style={styles.accidentText}>{accident}</Text>
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={subscription ? _unsubscribe : _subscribe} style={styles.button}>
-          <Text>{subscription ? 'On' : 'Off'}</Text>
+          <Text style={{fontSize:20, fontWeight: '700', color: 'white', backgroundColor: 'red'}}>{subscription ? 'Cancel' : 'On'}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
+        {/* <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
           <Text>Slow</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={_fast} style={styles.button}>
           <Text>Fast</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
-      <Text>{accident}</Text>
-      <Text>{gg}</Text>
+
+      <View style={{marginTop: 130}}>
+        <Text style={styles.text}>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
+        <Text style={styles.text}>
+          x: {round(x)} y: {round(y)} z: {round(z)}
+        </Text>
+        <Text style={styles.text}>{gg}</Text>
+      </View>
+
     </View>
+    </ScrollView>
   );
 }
 
@@ -103,7 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 10,
-    marginBottom: 500
+    // marginBottom: 500
   },
   text: {
     textAlign: 'center',
@@ -117,12 +128,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eee',
-    padding: 10,
+    backgroundColor: 'red',
+    borderRadius: 10,
+    width: 200,
+    padding: 11,
+    marginTop: 50,
+    marginBottom: 50
   },
   middleButton: {
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderColor: '#ccc',
   },
+  accidentImage: {
+    width: 380,
+    height:270,
+    marginTop: 130
+  },
+  accidentText: {
+    fontSize: 22,
+    textAlign: 'center',
+    fontWeight: '700',
+    marginTop:20
+  }
 });
