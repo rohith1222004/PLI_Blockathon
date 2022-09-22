@@ -1,48 +1,33 @@
-import {StyleSheet, Text, View,Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {StyleSheet } from 'react-native';
+import welcomeScreen from './screens/welcome_page'
+import situationScreen from './screens/ChooseSituation'
+// import scanScreen from './screens/ScanFace_page'
 
 
-import Report from './Components/ReportCard';
+const Stack = createStackNavigator();
 
-const App = () =>{
+const App= () => {
 
   return (
-
-<View style={styles.container}>
-  <View style={styles.options}>
-    <Image source={require('./assets/options.png')}/>
-  </View>
-  <View style={styles.Head}>
-    <Text style={{fontSize:30,fontWeight:'700',marginTop:15}}>Surya's Health Records</Text>
-  </View>
-    <View style={styles.Report1}>
-     <Report ReportName={'Hematology'} date={'25-MAY-2022'} ID={'SURYANAYA0004'} hospName={'Graham Nursing Home'} RefDOC={' Dr. Sankar M.S.,M.Ch(Uro)'}/>
-    </View>
-    <View style={styles.Report2}>
-    <Report ReportName={'Hematology'} date={'25-MAY-2022'} ID={'SURYANAYA0004'} hospName={'Graham Nursing Home'} RefDOC={' Dr. Sankar M.S.,M.Ch(Uro)'}/>
-    </View>
-</View>
-
+<NavigationContainer>
+  <Stack.Navigator>
+    <Stack.Screen name='Welcome' component={welcomeScreen} options={{header:()=>null}}/>
+    <Stack.Screen name='situation' component={situationScreen} options={{header:()=>null}}/>
+    {/* <Stack.Screen name='scan' component={scanScreen} options={{header:()=>null}}/> */}
+  </Stack.Navigator>
+</NavigationContainer>
 
   );
 }
 
 const styles = StyleSheet.create({
-Report1:{
-  marginTop:25,
-  alignItems:'center',
-},
-Report2:{
-  marginTop:10,
-  alignItems:'center',
-},
-options:{
-  marginTop:40,
-  marginLeft:15
-},
-Head:{
-  alignItems:'center'
-}
-
+  container:{
+    flex:1,
+    justifyContent:'center',
+   
+  },
 
 });
 

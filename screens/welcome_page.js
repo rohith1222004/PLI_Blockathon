@@ -1,14 +1,18 @@
-import {StyleSheet, Text, View,Image, ScrollView } from 'react-native';
-import Btn from './Components/Btn';
+import {StyleSheet, Text, View,Image,Pressable} from 'react-native';
+import Btn from '../Components/Btn';
 
-const Welcome_page = () =>{
+const Welcome_page = ({navigation}) =>{
+  const onclick = () => { 
+    navigation.navigate('situation');
+   }
+
 
   return (
 
     <View style={styles.container} >
       
       <View style={styles.options}>
-        <Image source={require("./assets/options.png")}/>
+        <Image source={require("../assets/options.png")}/>
       </View>
 
       <View style={styles.wholeWrap}>
@@ -19,12 +23,14 @@ const Welcome_page = () =>{
         </View>
 
           <View style={styles.buttonWrap}>
-            <View style={styles.button1}>
-              <Btn content={"Sign in/ Sign Up as User"} />
-            </View>
+            <Pressable onPress={onclick}>
+              <View style={styles.button1}>
+                <Btn content={"Sign in/Sign Up as User"} />
+              </View>
+            </Pressable>
 
             <View style={styles.button2}>
-              <Btn content={"Sign in/ Sign Up as Hospital"} />
+              <Btn content={"Sign in/Sign Up as Hospital"} />
             </View>
           </View>
       </View>
@@ -37,17 +43,14 @@ const Welcome_page = () =>{
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    // justifyContent:'center',
-    // backgroundColor:'red'
   },
   wholeWrap:{
     flex:1,
-    // backgroundColor:'yellow',
     justifyContent:'center',
   },
   WelcomeText:{
     width:350,
-    // marginTop:200,
+
   },
   WelcomeWrap:{
     alignItems:'center',

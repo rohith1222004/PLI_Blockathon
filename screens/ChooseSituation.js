@@ -1,12 +1,15 @@
 import {StyleSheet, Text, View,Image } from 'react-native';
-import RedBtn from './Components/RedBtn';
+import RedBtn from '../Components/RedBtn';
+import Btn from '../Components/Btn';
 
-const ChooseSituation = () =>{
-
+const ChooseSituation = ({navigation}) =>{
+  // const onclick = () => { 
+  //   navigation.navigate('scan');
+  //  }
   return (
     <View style={styles.container} >
       <View style={styles.options}>
-        <Image source={require("./assets/options.png")}/>
+        <Image source={require("../assets/options.png")}/>
       </View>
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
