@@ -2,7 +2,7 @@ import {StyleSheet, Text, View,Image } from 'react-native';
 import Btn from './Components/Btn';
 
 
-const App = () =>{
+const PatientDetails = () =>{
 
 
 
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default PatientDetails;
