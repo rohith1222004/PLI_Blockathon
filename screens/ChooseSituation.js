@@ -1,13 +1,7 @@
 import {StyleSheet, Text, View,Image } from 'react-native';
 import Btn from './Components/Btn';
 
-
-
-
-
-const App = () =>{
-
-
+const ChooseSituation = () =>{
 
   return (
     <View style={styles.container} >
@@ -40,9 +34,6 @@ const App = () =>{
 
 const styles = StyleSheet.create({
 
-  container:{
-    
-  },
   WelcomeText:{
     width:350,
     marginTop:150,
@@ -70,4 +61,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default ChooseSituation;
