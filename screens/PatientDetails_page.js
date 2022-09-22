@@ -13,7 +13,7 @@ const PatientDetails = () =>{
       </View>
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center'}}>Enter Patient Details</Text>
+            <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Enter Patient Details</Text>
           </View>
       </View>
 

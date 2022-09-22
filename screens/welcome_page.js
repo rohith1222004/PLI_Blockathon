@@ -11,7 +11,7 @@ const Welcome_page = () =>{
       </View>
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center'}}>Welcome, How is your day today?</Text>
+            <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Welcome, How is your day today?</Text>
           </View>
       </View>
 

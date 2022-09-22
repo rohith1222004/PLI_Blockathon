@@ -13,7 +13,7 @@ const What_Process = () =>{
       </View>
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center'}}>What to process ?</Text>
+            <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>What to process ?</Text>
           </View>
       </View>
 

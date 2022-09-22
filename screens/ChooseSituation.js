@@ -10,7 +10,7 @@ const ChooseSituation = () =>{
       </View>
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center'}}>Choose the Situation/condition</Text>
+            <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Choose the Situation/condition</Text>
           </View>
       </View>
 

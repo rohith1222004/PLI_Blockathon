@@ -19,7 +19,7 @@ const ScanFace = () =>{
 
       <View style={styles.WelcomeWrap}>
           <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center'}}>Scan the Patient to inform his family</Text>
+            <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Scan the Patient to inform his family</Text>
           </View>
       </View>
       <View style={styles.scanWrap}>

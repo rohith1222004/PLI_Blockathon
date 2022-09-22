@@ -16,20 +16,15 @@ const InputBox = ({placeholder}) =>{
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   input:{
-    borderWidth:1.5,
-    width:300,
-    height:50,
+    borderWidth:1,
+    width:320,
+    height:60,
     borderRadius:10,
     textAlign:'center',
-    fontSize:20
-  }
+    fontSize:20,
+  }  
 
 });
 
