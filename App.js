@@ -1,75 +1,154 @@
-import {StyleSheet, Text, View,Image, ScrollView } from 'react-native';
-import Btn from './Components/Btn';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { Accelerometer } from 'expo-sensors';
+import { ZoomOut } from 'react-native-reanimated';
+import { ScrollView } from 'react-native-gesture-handler';
 
-const Welcome_page = () =>{
+export default function App() {
+  const [data, setData] = useState({
+    x: 0,
+    y: 0,
+    z: 0,
+  });
 
+  const [accident, setAccident] = useState("Not accident")
+  const [gg, setgg] = useState("Null")
+  const [subscription, setSubscription] = useState(null);
+
+  const _slow = () => {
+    Accelerometer.setUpdateInterval(1000);
+  };
+
+  const _fast = () => {
+    Accelerometer.setUpdateInterval(16);
+  };
+
+
+  const isAccident = (x, y, z) => {
+    let f = (x*x) + (y*y) + (z*z)
+    let force = Math.sqrt(f)
+
+    let g = force/9.81
+    setgg(g)
+    if(g > 1){
+        setAccident("Light accident")
+    }
+
+    if(g > 2){
+      setAccident("Accident")
+    }
+    return 
+
+  }
+
+
+
+  const _subscribe = () => {
+    setSubscription(
+      Accelerometer.addListener(accelerometerData => {
+        setData(accelerometerData);
+        
+      })
+    );
+  };
+
+  const _unsubscribe = () => {
+    subscription && subscription.remove();
+    setSubscription(null);
+  };
+
+  useEffect(() => {
+    _subscribe();
+    return () => _unsubscribe();
+  }, []);
+
+  useEffect(() => {
+  isAccident(x,y,z)
+  console.log(accident);
+  }, [data.x, data.y, data.z]);
+
+
+
+  const { x, y, z } = data;
   return (
-
-    <View style={styles.container} >
+    <ScrollView>
+    <View style={styles.container}>
       
-      <View style={styles.options}>
-        <Image source={require("./assets/options.png")}/>
+      <View><Image style={styles.accidentImage} source={require('./assets/accident.jpg')}/></View>
+
+      <Text style={styles.accidentText}>{accident}</Text>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={subscription ? _unsubscribe : _subscribe} style={styles.button}>
+          <Text style={{fontSize:20, fontWeight: '700', color: 'white', backgroundColor: 'red'}}>{subscription ? 'Cancel' : 'On'}</Text>
+        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
+          <Text>Slow</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={_fast} style={styles.button}>
+          <Text>Fast</Text>
+        </TouchableOpacity> */}
       </View>
 
-      <View style={styles.wholeWrap}>
-        <View style={styles.WelcomeWrap}>
-            <View style={styles.WelcomeText}>
-              <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Welcome, How is your day today?</Text>
-            </View>
-        </View>
-
-          <View style={styles.buttonWrap}>
-            <View style={styles.button1}>
-              <Btn content={"Sign in/ Sign Up as User"} />
-            </View>
-
-            <View style={styles.button2}>
-              <Btn content={"Sign in/ Sign Up as Hospital"} />
-            </View>
-          </View>
+      <View style={{marginTop: 130}}>
+        <Text style={styles.text}>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
+        <Text style={styles.text}>
+          x: {round(x)} y: {round(y)} z: {round(z)}
+        </Text>
+        <Text style={styles.text}>{gg}</Text>
       </View>
+
     </View>
-
-
+    </ScrollView>
   );
 }
 
+function round(n) {
+  if (!n) {
+    return 0;
+  }
+  return Math.floor(n * 100) / 100;
+}
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    // justifyContent:'center',
-    // backgroundColor:'red'
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    // marginBottom: 500
   },
-  wholeWrap:{
-    flex:1,
-    // backgroundColor:'yellow',
-    justifyContent:'center',
+  text: {
+    textAlign: 'center',
   },
-  WelcomeText:{
-    width:350,
-    // marginTop:200,
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    marginTop: 15,
   },
-  WelcomeWrap:{
-    alignItems:'center',
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    borderRadius: 10,
+    width: 200,
+    padding: 11,
+    marginTop: 50,
+    marginBottom: 50
   },
-  button1:{
-    width:350,
-    height:50,
+  middleButton: {
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderColor: '#ccc',
   },
-  button2:{
-    width:350,
-    height:50,
-    marginTop:75
+  accidentImage: {
+    width: 380,
+    height:270,
+    marginTop: 130
   },
-  buttonWrap:{
-    alignItems:'center',
-    marginTop:85
-  },
-  options:{
-    marginTop:30,
-    marginLeft:15,
-
+  accidentText: {
+    fontSize: 22,
+    textAlign: 'center',
+    fontWeight: '700',
+    marginTop:20
   }
 });
-
-export default Welcome_page;
