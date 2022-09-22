@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
+import { ZoomOut } from 'react-native-reanimated';
 
 export default function App() {
   const [data, setData] = useState({
@@ -8,6 +9,9 @@ export default function App() {
     y: 0,
     z: 0,
   });
+
+  const [accident, setAccident] = useState("Not accident")
+  const [gg, setgg] = useState("Null")
   const [subscription, setSubscription] = useState(null);
 
   const _slow = () => {
@@ -18,10 +22,31 @@ export default function App() {
     Accelerometer.setUpdateInterval(16);
   };
 
+
+  const isAccident = (x, y, z) => {
+    let f = (x*x) + (y*y) + (z*z)
+    let force = Math.sqrt(f)
+
+    let g = force/9.81
+    setgg(g)
+    if(g > 1){
+        setAccident("Light accident")
+    }
+
+    if(g > 2){
+      setAccident("Accident")
+    }
+    return 
+
+  }
+
+
+
   const _subscribe = () => {
     setSubscription(
       Accelerometer.addListener(accelerometerData => {
         setData(accelerometerData);
+        
       })
     );
   };
@@ -35,6 +60,13 @@ export default function App() {
     _subscribe();
     return () => _unsubscribe();
   }, []);
+
+  useEffect(() => {
+  isAccident(x,y,z)
+  console.log(accident);
+  }, [data.x, data.y, data.z]);
+
+
 
   const { x, y, z } = data;
   return (
@@ -54,6 +86,8 @@ export default function App() {
           <Text>Fast</Text>
         </TouchableOpacity>
       </View>
+      <Text>{accident}</Text>
+      <Text>{gg}</Text>
     </View>
   );
 }
@@ -69,6 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 10,
+    marginBottom: 500
   },
   text: {
     textAlign: 'center',

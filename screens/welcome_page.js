@@ -6,25 +6,28 @@ const Welcome_page = () =>{
   return (
 
     <View style={styles.container} >
+      
       <View style={styles.options}>
         <Image source={require("./assets/options.png")}/>
       </View>
-      <View style={styles.WelcomeWrap}>
-          <View style={styles.WelcomeText}>
-            <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Welcome, How is your day today?</Text>
+
+      <View style={styles.wholeWrap}>
+        <View style={styles.WelcomeWrap}>
+            <View style={styles.WelcomeText}>
+              <Text style={{fontSize:30,textAlign:'center',fontWeight:'600'}}>Welcome, How is your day today?</Text>
+            </View>
+        </View>
+
+          <View style={styles.buttonWrap}>
+            <View style={styles.button1}>
+              <Btn content={"Sign in/ Sign Up as User"} />
+            </View>
+
+            <View style={styles.button2}>
+              <Btn content={"Sign in/ Sign Up as Hospital"} />
+            </View>
           </View>
       </View>
-
-      <View style={styles.buttonWrap}>
-        <View style={styles.button1}>
-           <Btn content={"Sign in/ Sign Up as User"} />
-        </View>
-
-        <View style={styles.button2}>
-          <Btn content={"Sign in/ Sign Up as Hospital"} />
-        </View>
-      </View>
-     
     </View>
 
 
@@ -32,9 +35,19 @@ const Welcome_page = () =>{
 }
 
 const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    // justifyContent:'center',
+    // backgroundColor:'red'
+  },
+  wholeWrap:{
+    flex:1,
+    // backgroundColor:'yellow',
+    justifyContent:'center',
+  },
   WelcomeText:{
     width:350,
-    marginTop:200,
+    // marginTop:200,
   },
   WelcomeWrap:{
     alignItems:'center',
@@ -53,8 +66,9 @@ const styles = StyleSheet.create({
     marginTop:85
   },
   options:{
-    marginTop:40,
-    marginLeft:15
+    marginTop:30,
+    marginLeft:15,
+
   }
 });
 
