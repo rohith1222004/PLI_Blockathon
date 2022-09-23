@@ -10,6 +10,7 @@ import DetailedRecordScreen from './screens/HealthRecordInDetail'
 import ReportCardScreen from './Components/ReportCard'
 import UploadDetailScreen from './screens/UploadDetails'
 import ProfileScreen from './screens/Profile_page'
+import FoodRecScreen from './screens/FoodRecom'
 
 
 const Stack = createStackNavigator();
@@ -27,6 +28,7 @@ const App = () => {
     <Stack.Screen name='ReportCard' component={ReportCardScreen} options={{header:()=>null}}/>
     <Stack.Screen name='Profile' component={ProfileScreen} options={{header:()=>null}}/>
     <Stack.Screen name='UploadDetails' component={UploadDetailScreen} options={{header:()=>null}}/>
+    <Stack.Screen name='FoodRec' component={FoodRecScreen} options={{header:()=>null}}/>
     
   </Stack.Navigator>
 </NavigationContainer>

@@ -25,11 +25,7 @@
     "react-native-reanimated": "~2.9.1",
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
-<<<<<<< HEAD
     "react-native-sensors": "^7.3.5"
-=======
-    "expo-av": "~12.0.4"
->>>>>>> 66b22402e5376d1d7c38755d0592035e3d52f276
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

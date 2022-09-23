@@ -1,9 +1,44 @@
-import {StyleSheet, Text, View,Image } from 'react-native';
+import {StyleSheet, Text, View,Image,Pressable } from 'react-native';
 import Btn from '../Components/Btn';
 import InputBox from '../Components/InputBox';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 
 
 const App = () =>{
+  async function takeAndUploadPhotoAsync() {
+    // Display the camera to the user and wait for them to take a photo or to cancel
+    // the action
+    let result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+    });
+  
+    if (result.cancelled) {
+      return;
+    }
+  
+    // ImagePicker saves the taken photo to disk and returns a local URI to it
+    let localUri = result.uri;
+    let filename = localUri.split('/').pop();
+  
+    // Infer the type of the image
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+  
+    // Upload the image using the fetch and FormData APIs
+    let formData = new FormData();
+    // Assume "photo" is the name of the form field the server expects
+    formData.append('photo', { uri: localUri, name: filename, type });
+  
+    return await fetch(YOUR_SERVER_URL, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    });
+  }
 
 
 
@@ -33,16 +68,19 @@ const App = () =>{
             <InputBox placeholder={'Doctor Signature'}/>
           </View>
         </View>
-
+        <Pressable onPress={takeAndUploadPhotoAsync}>
         <View style={styles.btn}>
           <Btn content={'Upload Document'}/>
         </View>
+        </Pressable>
         <View style={styles.line}>
                 <Text>hello</Text>
         </View>
+        
         <View style={styles.txtRed}>
-          <Text style={{color:'#DD4D4D',fontSize:22}}>Upload Medical Records</Text>
+          <Text style={{color:'#DD4D4D',fontSize:22}}>Add Medical Records</Text>
         </View>
+        
     </View>
 
   );
@@ -83,7 +121,7 @@ const styles = StyleSheet.create({
   },
   txtRed:{
     alignItems:'center',
-    marginTop:35,
+    marginTop:25,
     
   }
 
