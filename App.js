@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image, Button } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
@@ -46,28 +45,56 @@ export default function App() {
   const _fast = () => {
     Accelerometer.setUpdateInterval(16);
   };
-=======
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import {StyleSheet } from 'react-native';
-import welcomeScreen from './screens/welcome_page'
-import situationScreen from './screens/ChooseSituation'
-import scanScreen from './screens/ScanFace_page'
-import GraphScreen from './screens/GraphPage'
-import RecordScreen from './screens/HealthRecords'
-import DetailedRecordScreen from './screens/HealthRecordInDetail'
-import ReportCardScreen from './Components/ReportCard'
-import UploadDetailScreen from './screens/UploadDetails'
-import ProfileScreen from './screens/Profile_page'
-import FoodRecScreen from './screens/FoodRecom'
->>>>>>> 4f04e2b978ca5983f2181b7457ad3d60f6ee2963
 
 
-const Stack = createStackNavigator();
+  const isAccident = (x, y, z) => {
+    let f = (x*x) + (y*y) + (z*z)
+    let force = Math.sqrt(f)
 
-const App = () => {  
+    let g = force/9.81
+    setgg(g)
+    if(g > 1){
+        setAccident("Light accident");
+        // playSound();
+    }
+
+    if(g > 2){
+      setAccident("Accident")
+    }
+    return 
+
+  }
+
+
+
+  const _subscribe = () => {
+    setSubscription(
+      Accelerometer.addListener(accelerometerData => {
+        setData(accelerometerData);
+        
+      })
+    );
+  };
+
+  const _unsubscribe = () => {
+    subscription && subscription.remove();
+    setSubscription(null);
+  };
+
+  useEffect(() => {
+    _subscribe();
+    return () => _unsubscribe();
+  }, []);
+
+  useEffect(() => {
+  isAccident(x,y,z)
+  console.log(accident);
+  }, [data.x, data.y, data.z]);
+
+
+
+  const { x, y, z } = data;
   return (
-<<<<<<< HEAD
     <ScrollView>
     <View style={styles.container}>
         
@@ -77,28 +104,43 @@ const App = () => {
       {/* <View style={styles.container1}>
             <Button title="Play Sound" onPress={playSound} />
         </View> */}
-=======
-<NavigationContainer>
-  <Stack.Navigator>
-    <Stack.Screen name='Welcome' component={welcomeScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='situation' component={situationScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='scan' component={scanScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='Graph' component={GraphScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='MedicalRecords' component={RecordScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='DetailedRecord' component={DetailedRecordScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='ReportCard' component={ReportCardScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='Profile' component={ProfileScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='UploadDetails' component={UploadDetailScreen} options={{header:()=>null}}/>
-    <Stack.Screen name='FoodRec' component={FoodRecScreen} options={{header:()=>null}}/>
-    
-  </Stack.Navigator>
-</NavigationContainer>
->>>>>>> 4f04e2b978ca5983f2181b7457ad3d60f6ee2963
 
- ) }
+      <Text style={styles.accidentText}>{accident}</Text>
 
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={subscription ? _unsubscribe : _subscribe} style={styles.button}>
+          <Text style={{fontSize:20, fontWeight: '700', color: 'white', backgroundColor: 'red'}}>{subscription ? 'Cancel' : 'On'}</Text>
+        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
+          <Text>Slow</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={_fast} style={styles.button}>
+          <Text>Fast</Text>
+        </TouchableOpacity> */}
+      </View>
+
+        
+
+      <View style={{marginTop: 130}}>
+        <Text style={styles.text}>Accelerometer: (in Gs where 1 G = 9.81 m s^-2)</Text>
+        <Text style={styles.text}>
+          x: {round(x)} y: {round(y)} z: {round(z)}
+        </Text>
+        <Text style={styles.text}>{gg}</Text>
+      </View>
+
+    </View>
+    </ScrollView>
+  );
+}
+
+function round(n) {
+  if (!n) {
+    return 0;
+  }
+  return Math.floor(n * 100) / 100;
+}
 const styles = StyleSheet.create({
-<<<<<<< HEAD
     container1: {
         flex: 1,
         justifyContent: 'center',
@@ -130,6 +172,9 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 50
   },
+  test: {
+
+  },
   middleButton: {
     borderLeftWidth: 1,
     borderRightWidth: 1,
@@ -147,9 +192,3 @@ const styles = StyleSheet.create({
     marginTop:20
   }
 });
-=======
-
-});
-
-export default App;
->>>>>>> 4f04e2b978ca5983f2181b7457ad3d60f6ee2963
