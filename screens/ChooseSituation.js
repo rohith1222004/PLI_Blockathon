@@ -9,6 +9,9 @@ const ChooseSituation = ({navigation}) =>{
    const HealthReacords= () => { 
     navigation.navigate('MedicalRecords')
     }
+    const FoodRec = () => { 
+      navigation.navigate('FoodRec');
+     }
   return (
     <View style={styles.container} >
       <View style={styles.options}>
@@ -32,9 +35,12 @@ const ChooseSituation = ({navigation}) =>{
           <Btn content={"Health Records"} />
         </View>
       </Pressable>
+
+      <Pressable onPress={FoodRec}>
         <View style={styles.button2}>
           <Btn content={"Food Recommendations"} />
         </View>
+      </Pressable>
       </View>
      
     </View>

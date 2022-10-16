@@ -1,4 +1,6 @@
-import {StyleSheet, Text, View,Image, Pressable } from 'react-native';
+import {StyleSheet, Text, View,Image, Pressable,Alert, Button} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 import Btn from '../Components/Btn';
 
 
@@ -6,6 +8,21 @@ const ScanFace = ({navigation}) =>{
 
   const onclick = () => { 
     navigation.navigate('Graph');
+   }
+   const pickFromCamera = async () =>{
+    const {granted} = await Permissions.askAsync(Permissions.CAMERA)
+    if(granted){
+      let data = await ImagePicker.launchCameraAsync({
+        mediaTypes:ImagePicker.MediaTypeOptions.Images,
+        aspect:[1,1],
+        quality:0.5
+        
+      })
+      console.log(data)
+    }
+    else{
+        Alert.alert("You need to give permission")
+    }
    }
 
 
@@ -30,7 +47,11 @@ const ScanFace = ({navigation}) =>{
 
         </View>
       </View>
-
+    <View style={{alignItems:'center'}}>
+      <View style={styles.camera}>
+     <Button  onPress={pickFromCamera} title={"Cam"} color={'black'}></Button>
+     </View>
+     </View>
       <View style={styles.buttonWrap}>
         <Pressable onPress={onclick}>
         <View style={styles.button2}>
@@ -42,7 +63,7 @@ const ScanFace = ({navigation}) =>{
       <View style={styles.fingerprint}>
         <Text style={{}}>Not Working?<Text style={{fontWeight:'700'}}> Use Fingerprint</Text></Text>
       </View>
-     
+
     </View>
 
   );
@@ -76,7 +97,7 @@ const styles = StyleSheet.create({
   button2:{
     width:350,
     height:50,
-    marginTop:55
+    marginTop:20
   },
   buttonWrap:{
     alignItems:'center',
@@ -90,6 +111,12 @@ const styles = StyleSheet.create({
     marginTop:30,
     alignItems:'center'
   },
+  camera:{
+    width:50,
+    alignItems:'center',
+    marginTop:10
+
+  }
 });
 
 export default ScanFace;
