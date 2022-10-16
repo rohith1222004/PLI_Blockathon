@@ -19,8 +19,12 @@ return (
     <DetailedReport ReportName={'Hematology'} date={'25-MAY-2022'} ID={'SURYANAYA0004'} hospName={'Graham Nursing Home'} RefDOC={'Dr. Sankar M.S.,M.Ch(Uro)'} purpose={'Regular checkup on the  Blood Level.'} VerfDoc={' Dr. Sankar M.S.,M.Ch(Uro)'}/>
   </View>
   <View style={styles.ReportImgs}>
+    <View>
     <Image source={require('../assets/ReportImg.png')} />
+    </View>
+    <View style={styles.img2}>
     <Image source={require('../assets/ReportImg2.png')}/>
+    </View>
   </View>
  
 </View>
@@ -48,7 +52,9 @@ ReportImgs:{
   marginTop:40,
   alignItems:'center'
 },
-
+img2:{
+  marginTop:20
+}
 
 });
 
